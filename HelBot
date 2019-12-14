@@ -1,0 +1,89 @@
+import discord
+from discord.ext.commands import Bot
+from discord.ext import commands
+import asyncio
+import random
+import youtube_dl
+from discord import Game
+
+
+client = discord.Client()
+
+async def background_loop():
+    await client.wait_until_ready()
+    while not client.is_closed:
+        channel = client.get_channel("643104994836348948")
+        messages = ["Hello!", "How are you doing?", "Howdy!", "you're the best!", "am i a good bot?"]
+        await client.send_message(channel, random.choice(messages))
+        await asyncio.sleep(12)
+
+client.loop.create_task(background_loop())
+
+Client  = discord.client
+client = commands.Bot(command_prefix = "HB!")
+
+@client.event
+async def on_ready():
+    print("Ready!")
+    loop = asyncio.get_event_loop()
+
+@client.event
+async def on_invite():
+    print("Invited to a server")
+    
+    
+@client.command()
+async def clear(ctx, amount=999):
+    await ctx.channel.purge(limit=amount)
+    print('done')
+
+@client.command()
+async def copy(ctx, arg):
+    await ctx.send(arg)
+    print ('copycat')
+
+@client.command()
+async def lwiay(ctx):
+    await ctx.send('**https://www.reddit.com/r/LWIAY/**')
+
+@client.command()
+async def hack(ctx, arg):
+    await ctx.send('**hacking** ' + arg)
+
+@client.command()
+async def kill(ctx, arg):
+    await ctx.send('**killing** ' + arg)
+
+@client.command()
+async def hug(ctx, arg):
+    await ctx.send('**hugging** ' + arg)
+
+@client.command()
+async def kiss(ctx, arg):
+    await ctx.send('**kissing** ' + arg)
+
+@client.command()
+async def marry(ctx, arg):
+    await ctx.send('you have now married ' + arg)
+
+@client.command()
+async def istheearthdestroyedyet(ctx):
+    await ctx.send('**no it has not**')
+
+@client.command()
+async def isgoogledown(ctx):
+    await ctx.send('**no google is not down you dumbdumb**')
+
+@client.command()
+async def helpserver(ctx):
+    await ctx.send('if you need help then go here https://discord.gg/YhDFH8F')
+
+
+
+    
+
+client.run("process.env.BOT_TOKEN")
+
+
+
+
